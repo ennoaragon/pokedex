@@ -7,10 +7,11 @@ import (
 
 func main() {
 
+	pokeClient := pokeapi.NewClient(5 * time.Second)
+
 	c := &config{
 		commands: getCommands(),
-		next: "https://pokeapi.co/api/v2/location-area/",
-		prev: "",
+		pokeapiClient: pokeClient,
 	}
 
 	replStart(c)

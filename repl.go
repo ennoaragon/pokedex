@@ -1,10 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 	"strings"
+
+	"github.com/ennoaragon/pokedex/internal/pokeapi"
 )
 
 type cliCommand struct {
@@ -15,8 +17,9 @@ type cliCommand struct {
 
 type config struct {
 	commands map[string]cliCommand
-	next string
-	prev string
+	pokeapiClient pokeapi.Client
+	next *string
+	prev *string
 }
 
 func getCommands() map[string]cliCommand{
